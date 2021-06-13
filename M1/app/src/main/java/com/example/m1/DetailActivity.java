@@ -1,6 +1,7 @@
 package com.example.m1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.Debug;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -9,14 +10,23 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.HashMap;
 
 public class DetailActivity extends AppCompatActivity {
 
     TextView textview_placename, textview_address, textview_managerunit, textview_applyunit,
              textview_contactor, textview_officephone, textview_fax, textview_email, textview_register,
              textview_imageurl;
+    ImageView imageurl_imageview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +86,11 @@ public class DetailActivity extends AppCompatActivity {
 
         textview_imageurl = findViewById(R.id.textView_image);
         textview_imageurl.setText(item.imageUrl);
+        imageurl_imageview = findViewById(R.id.imageView_image);
+        try{
 
-
+        }catch (Exception e){
+            Log.e("IMAGE_ERROR", "Error:",e);
+        }
     }
 }
