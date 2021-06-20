@@ -1,6 +1,7 @@
 package com.example.m1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.motion.widget.Debug;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -83,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
 
         textview_imageurl = findViewById(R.id.textView_image);
         textview_imageurl.setText(item.imageUrl);
-        textview_imageurl.setOnClickListener(new View.OnClickListener(){
+        textview_imageurl.setOnClickListener(new View.OnClickListener(){ // Debug
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -94,6 +95,5 @@ public class DetailActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.imageView);
         new ImageLoader((ImageView) imageView).execute(item.imageUrl);
-
     }
 }
