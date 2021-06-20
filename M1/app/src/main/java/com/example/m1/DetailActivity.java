@@ -7,6 +7,8 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,18 +17,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.HashMap;
+import java.net.URL;
 
 public class DetailActivity extends AppCompatActivity {
 
     TextView textview_placename, textview_address, textview_managerunit, textview_applyunit,
              textview_contactor, textview_officephone, textview_fax, textview_email, textview_register,
              textview_imageurl;
-    ImageView imageurl_imageview;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +84,16 @@ public class DetailActivity extends AppCompatActivity {
 
         textview_imageurl = findViewById(R.id.textView_image);
         textview_imageurl.setText(item.imageUrl);
-        imageurl_imageview = findViewById(R.id.imageView_image);
-        try{
+        textview_imageurl.setOnClickListener(new View.OnClickListener(){ // Debug
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(item.imageUrl));
+                startActivity(intent);
+            }
+        });
 
-        }catch (Exception e){
-            Log.e("IMAGE_ERROR", "Error:",e);
-        }
+        imageView = findViewById(R.id.imageView);
+        new ImageLoader((ImageView) imageView).execute(item.imageUrl);
     }
 }
