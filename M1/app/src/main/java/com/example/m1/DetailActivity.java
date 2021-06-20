@@ -56,7 +56,7 @@ public class DetailActivity extends AppCompatActivity {
         textview_contactor.setText(item.contactor);
 
         textview_officephone = findViewById(R.id.textView_officephone);
-        textview_officephone.setText(item.officePhone);
+        textview_officephone.setText("公司電話號碼: " + item.officePhone);
         textview_officephone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,16 +74,16 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         textview_fax = findViewById(R.id.textView_fax);
-        textview_fax.setText(item.fax);
+        textview_fax.setText("傳真號碼: " + item.fax);
 
         textview_email = findViewById(R.id.textView_email);
-        textview_email.setText(item.email);
+        textview_email.setText("Email: " + item.email);
 
         textview_register = findViewById(R.id.textView_register);
-        textview_register.setText(item.register);
+        textview_register.setText("註冊號: " + item.register);
 
-        textview_imageurl = findViewById(R.id.textView_image);
-        textview_imageurl.setText(item.imageUrl);
+        //textview_imageurl = findViewById(R.id.textView_image);
+        //textview_imageurl.setText(item.imageUrl);
         textview_imageurl.setOnClickListener(new View.OnClickListener(){ // Debug
             @Override
             public void onClick(View v){
@@ -93,7 +93,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.imageView_image);
         new ImageLoader((ImageView) imageView).execute(item.imageUrl);
     }
 }
